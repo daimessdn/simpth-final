@@ -41,118 +41,53 @@
         }
     </style>
 </head>
-<body>
-    <div id="container">
-        <button name="c4"
-                onclick="noteDown('C4');">C4</button>
-        <button name="c5"
-                onclick="noteDown('C5');">C5</button>
-        <button name="c6"
-                onclick="noteDown('C6');">C6</button>
-        <button name="c7"
-                onclick="noteDown('C7');">C7</button>
-        <button name="g4"
-                onclick="noteDown('G4');">G4</button>
-        <button name="g5"
-                onclick="noteDown('G5');">G5</button>
-        <button name="g6"
-                onclick="noteDown('G6');">G6</button>
-        <button name="g7"
-                onclick="noteDown('G7');">G7</button>
-        <button name="bb4"
-                onclick="noteDown('Bb4');">Bb4</button>
-        <button name="bb5"
-                onclick="noteDown('Bb5');">Bb5</button>
-        <button name="bb6"
-                onclick="noteDown('Bb6');">Bb6</button>
-        <button name="bb7"
-                onclick="noteDown('Bb7');">Bb7</button>
-        <button name="f4"
-                onclick="noteDown('F4');">F4</button>
-        <button name="f5"
-                onclick="noteDown('F5');">F5</button>
-        <button name="f6"
-                onclick="noteDown('F6');">F6</button>
-        <button name="f7"
-                onclick="noteDown('F7');">F7</button>
-    </div>
+<body onload="loadPad()">
+    <div id="container"></div>
     
     <script src="Tone.js"></script>
     <script>
         let synth = new Tone.PolySynth().toDestination();
 
+        const notes = [ "C4",  "C5",  "C6",  "C7",
+                        "G4",  "G5",  "G6",  "G7",
+                       "Bb4", "Bb5", "Bb6", "Bb7",
+                        "F4",  "F5",  "F6",  "F7"];
+
+        const keycodes = [49, 50, 51, 52,
+                          81, 87, 69, 82,
+                          65, 83, 68, 70,
+                          90, 88, 67, 86];
+
         const noteDown = (key) => {
             synth.triggerAttackRelease(key, "16n");
         };
 
-        document.addEventListener("keydown", (event) => {
-            let button = document.getElementById("container").children;
-            let targetButton;
+        const noteUp = (element) => {
+            element.style.aniimation = "synthClicked 1s ease";
+        };
 
-            if (event.keyCode == 49) {
-                targetButton = button[0];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 50) {
-                targetButton = button[1];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 51) {
-                targetButton = button[2];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 52) {
-                targetButton = button[3];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 81) {
-                targetButton = button[4];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 87) {
-                targetButton = button[5];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 69) {
-                targetButton = button[6];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 82) {
-                targetButton = button[7];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 65) {
-                targetButton = button[8];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 83) {
-                targetButton = button[9];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 68) {
-                targetButton = button[10];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 70) {
-                targetButton = button[11];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 90) {
-                targetButton = button[12];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 88) {
-                targetButton = button[13];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 67) {
-                targetButton = button[14];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
-            } else if (event.keyCode == 86) {
-                targetButton = button[15];
-                targetButton.click();
-                targetButton.style.animation = "synthClicked 1s ease";
+        const loadPad = () => {
+            let pads = "";
+
+            notes.forEach(note => {
+                pads += `<button name="${note}"
+                                 onclick="noteDown('${note}');"
+                                 onkeyup="noteUp();">
+                            ${note}
+                        </button>`;
+            });
+
+            document.getElementById("container").innerHTML = pads;
+        }
+
+        document.addEventListener("keydown", (event) => {
+            let buttons = document.getElementById("container").children;
+
+            for (let i = 0; i < buttons.length; i++) {
+                if (event.keyCode == keycodes[i]) {
+                    buttons[i].click();
+                    noteUp(buttons[i]);
+                }
             }
         });
     </script>
