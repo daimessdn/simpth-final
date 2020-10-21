@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tonejs</title>
+
+    <style>
+        @keyframes synthClicked {
+            from {
+                background-color: #707070;
+            } to {
+                background-color: #202020;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100%;
+        }
+
+        #container {
+            width: 500px;
+            height: 500px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        #container button {
+            flex: 20%;
+            margin: 5px;
+            background-color: #202020;
+            font-family: "Roboto Mono", monospace;
+            border: none;
+            border-radius: 2px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button name="c4"
+                onclick="noteDown('C4');">C4</button>
+        <button name="c5"
+                onclick="noteDown('C5');">C5</button>
+        <button name="c6"
+                onclick="noteDown('C6');">C6</button>
+        <button name="c7"
+                onclick="noteDown('C7');">C7</button>
+        <button name="g4"
+                onclick="noteDown('G4');">G4</button>
+        <button name="g5"
+                onclick="noteDown('G5');">G5</button>
+        <button name="g6"
+                onclick="noteDown('G6');">G6</button>
+        <button name="g7"
+                onclick="noteDown('G7');">G7</button>
+        <button name="bb4"
+                onclick="noteDown('Bb4');">Bb4</button>
+        <button name="bb5"
+                onclick="noteDown('Bb5');">Bb5</button>
+        <button name="bb6"
+                onclick="noteDown('Bb6');">Bb6</button>
+        <button name="bb7"
+                onclick="noteDown('Bb7');">Bb7</button>
+        <button name="f4"
+                onclick="noteDown('F4');">F4</button>
+        <button name="f5"
+                onclick="noteDown('F5');">F5</button>
+        <button name="f6"
+                onclick="noteDown('F6');">F6</button>
+        <button name="f7"
+                onclick="noteDown('F7');">F7</button>
+    </div>
+    
+    <script src="Tone.js"></script>
+    <script>
+        let synth = new Tone.PolySynth().toDestination();
+
+        const noteDown = (key) => {
+            synth.triggerAttackRelease(key, "16n");
+        };
+
+        document.addEventListener("keydown", (event) => {
+            let button = document.getElementById("container").children;
+            let targetButton;
+
+            if (event.keyCode == 49) {
+                targetButton = button[0];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 50) {
+                targetButton = button[1];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 51) {
+                targetButton = button[2];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 52) {
+                targetButton = button[3];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 81) {
+                targetButton = button[4];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 87) {
+                targetButton = button[5];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 69) {
+                targetButton = button[6];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 82) {
+                targetButton = button[7];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 65) {
+                targetButton = button[8];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 83) {
+                targetButton = button[9];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 68) {
+                targetButton = button[10];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 70) {
+                targetButton = button[11];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 90) {
+                targetButton = button[12];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 88) {
+                targetButton = button[13];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 67) {
+                targetButton = button[14];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            } else if (event.keyCode == 86) {
+                targetButton = button[15];
+                targetButton.click();
+                targetButton.style.animation = "synthClicked 1s ease";
+            }
+        });
+    </script>
+</body>
+</html>
