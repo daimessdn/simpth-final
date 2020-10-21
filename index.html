@@ -35,6 +35,7 @@
             margin: 5px;
             background-color: #202020;
             font-family: "Roboto Mono", monospace;
+            font-size: 20px;
             border: none;
             border-radius: 2px;
             color: #fff;
@@ -62,17 +63,17 @@
             synth.triggerAttackRelease(key, "16n");
         };
 
-        const noteUp = (element) => {
-            element.style.animation = "synthClicked 1s ease";
-        };
-
         const loadPad = () => {
             let pads = "";
 
             notes.forEach(note => {
                 pads += `<button name="${note}"
-                                 onclick="noteDown('${note}');"
-                                 onkeyup="noteUp();">
+                                 onclick="
+                                    noteDown('${note}');
+                                    this.style.animation = 'synthClicked .1s ease';
+                                    
+                                    setTimeout(() => {this.style.animation = 'none'}, 100);
+                                 ">
                             ${note}
                         </button>`;
             });
@@ -86,7 +87,6 @@
             for (let i = 0; i < buttons.length; i++) {
                 if (event.keyCode == keycodes[i]) {
                     buttons[i].click();
-                    noteUp(buttons[i]);
                 }
             }
         });
