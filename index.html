@@ -2,100 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tonejs</title>
-
-    <style>
-        @keyframes synthClicked {
-            from {
-                background-color: #707070;
-            } to {
-                background-color: #202020;
-            }
-        }
-
-        @media screen and (max-width: 370px) {
-            #container {
-                width: 80%;
-            }
-        }
-        
-        * {
-            box-sizing: border-box;
-        }
-        
-        body {
-            height: 100%;
-        }
-
-        #container {
-            width: 500px;
-            height: 500px;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-
-        #container button {
-            flex: 20%;
-            margin: 5px;
-            background-color: #202020;
-            font-family: "Roboto Mono", monospace;
-            font-size: 20px;
-            border: none;
-            border-radius: 2px;
-            color: #fff;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width,
+                                   initial-scale=1.0">
+    <title>tone-js</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body onload="loadPad()">
     <div id="container"></div>
     
     <script src="Tone.js"></script>
-    <script>
-        let synth = new Tone.PolySynth().toDestination();
-
-        const notes = [ "C4",  "C5",  "C6",  "C7",
-                        "G4",  "G5",  "G6",  "G7",
-                       "Bb4", "Bb5", "Bb6", "Bb7",
-                        "F4",  "F5",  "F6",  "F7"];
-
-        const keycodes = [49, 50, 51, 52,
-                          81, 87, 69, 82,
-                          65, 83, 68, 70,
-                          90, 88, 67, 86];
-
-        const noteDown = (key) => {
-            synth.triggerAttackRelease(key, "16n");
-        };
-
-        const loadPad = () => {
-            let pads = "";
-
-            notes.forEach(note => {
-                pads += `<button name="${note}"
-                                 onclick="
-                                    noteDown('${note}');
-                                    this.style.animation = 'synthClicked .1s ease';
-                                    
-                                    setTimeout(() => {this.style.animation = 'none'}, 100);
-                                 ">
-                            ${note}
-                        </button>`;
-            });
-
-            document.getElementById("container").innerHTML = pads;
-        }
-
-        document.addEventListener("keydown", (event) => {
-            let buttons = document.getElementById("container").children;
-
-            for (let i = 0; i < buttons.length; i++) {
-                if (event.keyCode == keycodes[i]) {
-                    buttons[i].click();
-                }
-            }
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>

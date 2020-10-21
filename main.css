@@ -1,0 +1,56 @@
+@keyframes synthClicked {
+    from {
+        background-color: #707070;
+    } to {
+        background-color: #202020;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    #container {
+        width: 80%;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    font-family: "Roboto Mono", monospace;
+}
+
+#container {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.pad {
+    flex: 20%;
+    margin: 5px;
+    background-color: #202020;
+    font-size: 20px;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    position: relative;
+}
+
+.note-assigned {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.pad-num {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 10px;
+    background-color: #fff;
+    color: #000;
+}
