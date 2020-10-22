@@ -18,31 +18,35 @@ const loadPad = () => {
     let pads = "";
 
     notes.forEach((note, index) => {
-        pads += `<div class="pad"
-                        onclick="
-                        noteDown('${note}');
-                        this.style.animation = 'synthClicked .1s ease';       
-                        setTimeout(() => {this.style.animation = 'none'}, 100);
-                    ">
+        pads += `<div class="pad">
                     <strong class="pad-num"
-                            id="pad-num-${index}"
-                    >
+                            id="pad-num-${index}">
                         #${index}
+                    </strong>
+                            
+                    <strong class="note-keyboard"
+                            id="note-keyboard-${index}">
+                        ${String.fromCharCode(keycodes[index])}
                     </strong>
 
                     <strong class="note-assigned">${note}</strong>
-                    </div>`;
+                 </div>`;
     });
 
     document.getElementById("container").innerHTML = pads;
-}
+};
 
 document.addEventListener("keydown", (event) => {
     let buttons = document.getElementById("container").children;
 
     for (let i = 0; i < buttons.length; i++) {
         if (event.keyCode == keycodes[i]) {
-            buttons[i].click();
+            noteDown(notes[i]);
+
+            buttons[i].style.animation = 'synthClicked .1s ease';       
+            setTimeout(() => {
+                buttons[i].style.animation = 'none'
+            }, 100);
         }
     }
 });

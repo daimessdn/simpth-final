@@ -46,11 +46,19 @@ body {
     left: 0;
 }
 
-.pad-num {
+.pad-num, .note-keyboard {
     position: absolute;
-    top: 0;
-    right: 0;
     font-size: 10px;
     background-color: #fff;
     color: #000;
+}
+
+.pad-num {
+    top: 0;
+    right: 0;
+}
+
+.note-keyboard {
+    left: 2px;
+    top: 2px;
 }
