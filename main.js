@@ -1,4 +1,13 @@
-let synth = new Tone.PolySynth().toDestination();
+let amSynth = new Tone.AMSynth().toDestination();
+let duSynth = new Tone.DuoSynth().toDestination();
+let fmSynth = new Tone.FMSynth().toDestination();
+let mbSynth = new Tone.MembraneSynth().toDestination();
+let mtSynth = new Tone.MetalSynth().toDestination();
+let mnSynth = new Tone.MonoSynth().toDestination();
+let noSynth = new Tone.NoiseSynth().toDestination();
+let plSynth = new Tone.PluckSynth().toDestination();
+let poSynth = new Tone.PolySynth().toDestination();
+let synth   = new Tone.Synth().toDestination();
 
 const notes = [ "C4",  "C5",  "C6",  "C7",
                 "G4",  "G5",  "G6",  "G7",
@@ -6,12 +15,12 @@ const notes = [ "C4",  "C5",  "C6",  "C7",
                 "F4",  "F5",  "F6",  "F7"];
 
 const keycodes = [49, 50, 51, 52,
-                    81, 87, 69, 82,
-                    65, 83, 68, 70,
-                    90, 88, 67, 86];
+                  81, 87, 69, 82,
+                  65, 83, 68, 70,
+                  90, 88, 67, 86];
 
 const noteDown = (key) => {
-    synth.triggerAttackRelease(key, "16n");
+    poSynth.triggerAttackRelease(key, "16n");
 };
 
 const loadPad = () => {
