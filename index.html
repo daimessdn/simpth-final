@@ -12,6 +12,20 @@
 
     <input type="text" />
     
+    <div id="option">
+        <input type="checkbox"
+               name="shortcut"
+               onchange="toggleShortcut(this);"
+               checked>
+        <label for="shortcut">Display shortcut helper</label><br />
+
+        <input type="checkbox"
+               name="number"
+               onchange="toggleNumber(this);"
+               checked>
+        <label for="number">Display pad number</label>
+    </div>
+    
     <script src="Tone.js"></script>
     <script src="main.js"></script>
 </body>

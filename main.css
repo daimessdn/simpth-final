@@ -62,3 +62,10 @@ body {
     left: 2px;
     top: 2px;
 }
+
+#option {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 12px;
+}

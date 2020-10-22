@@ -36,6 +36,34 @@ const loadPad = () => {
     document.getElementById("container").innerHTML = pads;
 };
 
+const toggleShortcut = (element) => {
+    const shortcuts = document.querySelectorAll(".note-keyboard");
+
+    if (element.checked == false) {
+        shortcuts.forEach(shortcut => {
+            shortcut.style.display = "none";
+        });
+    } else {
+        shortcuts.forEach(shortcut => {
+            shortcut.style.display = "block";
+        });
+    }
+};
+
+const toggleNumber = (element) => {
+    const numbers = document.querySelectorAll(".pad-num");
+
+    if (element.checked == false) {
+        numbers.forEach(number => {
+            number.style.display = "none";
+        });
+    } else {
+        numbers.forEach(number => {
+            number.style.display = "block";
+        });
+    }
+};
+
 document.addEventListener("keydown", (event) => {
     let buttons = document.getElementById("container").children;
 
