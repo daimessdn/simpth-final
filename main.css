@@ -13,6 +13,8 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     min-height: 100%;
     background-color: rgb(63, 29, 107);
     font-size: 12px;
