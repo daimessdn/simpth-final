@@ -6,12 +6,6 @@
     }
 }
 
-@media screen and (max-width: 370px) {
-    #container {
-        width: 80%;
-    }
-}
-
 * {
     box-sizing: border-box;
 }
@@ -71,4 +65,22 @@ body {
     top: 8px;
     right: 8px;
     font-size: 12px;
+}
+
+input, button, label {
+    font-family: "Roboto Mono", monospace;
+    font-size: 12px;
+    margin: 2px;
+}
+
+@media only screen and (max-width: 768px) {
+    #container {
+        width: 80%;
+    }
+
+    #option {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+    }
 }

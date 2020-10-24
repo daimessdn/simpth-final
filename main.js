@@ -87,3 +87,22 @@ document.addEventListener("keydown", (event) => {
         }
     }
 });
+
+let noteForm = document.getElementById("assign");
+
+const setNote = (note, newNote) => {
+    notes[notes.indexOf(note)] = newNote;
+};
+
+noteForm.addEventListener("submit", (event) => {
+    let oldNote = document.setNote.note.value;
+    let newNote = document.setNote.newNote.value;
+
+    event.preventDefault();
+    setNote(oldNote, newNote);
+
+    document.setNote.note.value = "";
+    document.setNote.newNote.value = "";
+
+    loadPad();
+});

@@ -22,38 +22,29 @@
                onchange="toggleNumber(this);"
                checked>
         <label for="number">Display pad number</label>
+
+        <hr />
+
+        <form id="assign"
+              name="setNote"
+              onsubmit="">
+            <label for="note">
+                Type old note (i.e. "D3")
+            </label><br />
+            <input type="text"
+                   name="note"
+                   placeholder="old key..." /><br />
+
+            <label for="newNote">Type old note (i.e. "D3")</label><br />
+            <input type="text"
+                   name="newNote"
+                   placeholder="new key..." /><br />
+
+            <button type="submit">submit</button>
+        </form>
     </div>
-
-    <form id="assign"
-          name="setNote"
-          onsubmit="">
-        <input type="text"
-               name="note"
-               placeholder="assign key..." />
-
-        <input type="text"
-               name="newNote"
-               placeholder="assign key..." />
-
-        <button type="submit">submit</button>
-    </form>
     
     <script src="Tone.js"></script>
     <script src="main.js"></script>
-    <script>
-        let noteForm = document.getElementById("assign");
-        const setNote = (note, newNote) => {
-            notes[notes.indexOf(note)] = newNote;
-        };
-
-        noteForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            setNote(document.setNote.note.value, 
-                    document.setNote.newNote.value);
-
-            loadPad();
-        })
-
-    </script>
 </body>
 </html>
