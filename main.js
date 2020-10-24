@@ -9,10 +9,10 @@ let plSynth = new Tone.PluckSynth().toDestination();
 let poSynth = new Tone.PolySynth().toDestination();
 let synth   = new Tone.Synth().toDestination();
 
-const notes = [ "C4",  "C5",  "C6",  "C7",
-                "G4",  "G5",  "G6",  "G7",
-                "Bb4", "Bb5", "Bb6", "Bb7",
-                "F4",  "F5",  "F6",  "F7"];
+const notes = [ "D3",  "D4",  "D5",  "D6",
+                "F#3", "F#4", "F#5", "F#6",
+                "A3",  "A4",  "A5",  "A6",
+                "Db3", "Db4", "Db5", "Db6"];
 
 const keycodes = [49, 50, 51, 52,
                   81, 87, 69, 82,
