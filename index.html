@@ -10,7 +10,7 @@
 <body onload="loadPad()">
     <div id="container"></div>
 
-    <div id="option">
+    <div id="option" style="display: block;">
         <input type="checkbox"
                name="shortcut"
                onchange="toggleShortcut(this);"
@@ -43,6 +43,11 @@
             <button type="submit">submit</button>
         </form>
     </div>
+
+    <button id="option-menu"
+            onclick="toggleMenu();">
+        menu
+    </button>
     
     <script src="Tone.js"></script>
     <script src="main.js"></script>

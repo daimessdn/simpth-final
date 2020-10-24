@@ -73,6 +73,16 @@ const toggleNumber = (element) => {
     }
 };
 
+const toggleMenu = () => {
+    let menu = document.getElementById('option');
+
+    if (menu.style.display == 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+}
+
 document.addEventListener("keydown", (event) => {
     let buttons = document.getElementById("container").children;
 
