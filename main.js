@@ -27,7 +27,10 @@ const loadPad = () => {
     let pads = "";
 
     notes.forEach((note, index) => {
-        pads += `<div class="pad">
+        pads += `<div class="pad"
+                      onclick="
+                        noteDown(this.children[2].innerHTML);    
+                 ">
                     <strong class="pad-num"
                             id="pad-num-${index}">
                         #${index}
