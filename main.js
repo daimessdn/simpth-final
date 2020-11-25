@@ -9,6 +9,8 @@ let plSynth = new Tone.PluckSynth().toDestination();
 let poSynth = new Tone.PolySynth().toDestination();
 let synth   = new Tone.Synth().toDestination();
 
+let buttons = document.getElementById("container").children;
+
 const notes = [ "D3",  "D4",  "D5",  "D6",
                 "F#3", "F#4", "F#5", "F#6",
                 "A3",  "A4",  "A5",  "A6",
@@ -21,6 +23,13 @@ const keycodes = [49, 50, 51, 52,
 
 const noteDown = (key) => {
     poSynth.triggerAttackRelease(key, "16n");
+    
+    let i = notes.indexOf(key);
+    
+    buttons[i].style.animation = 'synthClicked .1s ease';       
+    setTimeout(() => {
+        buttons[i].style.animation = 'none'
+    }, 100);
 };
 
 const loadPad = () => {
@@ -87,16 +96,9 @@ const toggleMenu = () => {
 }
 
 document.addEventListener("keydown", (event) => {
-    let buttons = document.getElementById("container").children;
-
     for (let i = 0; i < buttons.length; i++) {
         if (event.keyCode == keycodes[i]) {
             noteDown(notes[i]);
-
-            buttons[i].style.animation = 'synthClicked .1s ease';       
-            setTimeout(() => {
-                buttons[i].style.animation = 'none'
-            }, 100);
         }
     }
 });
