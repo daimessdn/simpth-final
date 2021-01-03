@@ -1,0 +1,9 @@
+{
+  "name": "simpth",
+  "short_name": "simpth",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#3f1d6b",
+  "theme_color": " #202020",
+  "orientation": "portrait-primary"
+}
